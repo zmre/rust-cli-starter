@@ -1,0 +1,49 @@
+[package]
+name = "CHANGME"
+version = "0.1.0"
+edition = "2018"
+authors = ["Patrick Walsh <patrick.walsh@ironcorelabs.com>"]
+license = "MIT OR Apache-2.0"
+description = "CHANGME"
+readme = "README.md"
+keywords = ["cli"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+# Make error management easier
+anyhow = "1.0"
+
+# Be async
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
+
+# Serialization
+serde = { version = "^1.0", features = ["derive"] }
+serde_derive = "^1.0" # used for config
+serde_json =  "~1.0" # used to serialize the access tokens
+
+# Handle command line arguments
+structopt = "^0.3"
+clap-verbosity-flag = "0.3.2"
+
+# Handle logging
+log = "0.4"
+simplelog = "^0.10.0"
+
+# Handle config file
+confy = "0.4.0"
+
+# Prompt user for values if not found on CLI or in config
+text_io = "0.1.9"
+
+# Twitter API library
+egg-mode = { version = "0.16", features = ["rustls"], default-features = false }
+
+# Work with dates
+chrono = "^0.4"
+chrono-english = "^0.1"
+
+#reqwest = { version = "0.11", features = ["json"] }
+#ctrlc = "3.2.0"
+
+[dev-dependencies]
+tokio-test = "0.4.2"
