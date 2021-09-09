@@ -11,7 +11,7 @@ use serde::{Deserialize, Serialize};
 use simplelog::*;
 use std::io::Write;
 use std::path::PathBuf;
-use structopt::clap::crate_version;
+use structopt::clap::{crate_version, AppSettings};
 use structopt::StructOpt;
 use text_io::read;
 
@@ -23,7 +23,7 @@ const APP_NAME: &'static str = "CHANGEME";
 const APP_DESCRIPTION: &'static str = "CHANGEME";
 
 #[derive(Debug, StructOpt)]
-#[structopt(name = APP_NAME, version = crate_version!(), about = APP_DESCRIPTION, rename_all = "kebab-case")]
+#[structopt(name = APP_NAME, version = crate_version!(), about = APP_DESCRIPTION, rename_all = "kebab-case", setting = AppSettings::InferSubcommands)]
 struct Cli {
     /// The config file to use
     #[structopt(short, long, parse(from_os_str))]
@@ -135,4 +135,14 @@ fn get_config_from_user(
         None => confy::store(APP_NAME, &cfg),
     }
     .map(|_| cfg)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use anyhow::Result;
+    use tokio_test::block_on;
+
+    #[test]
+    fn test_the_thing() {}
 }
