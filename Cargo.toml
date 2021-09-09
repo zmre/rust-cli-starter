@@ -9,6 +9,14 @@ readme = "README.md"
 keywords = ["cli"]
 categories = ["command-line-utilities"]
 
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "CHANGEME"
+path = "src/main.rs"
+
 [dependencies]
 # Make error management easier
 anyhow = "1.0"

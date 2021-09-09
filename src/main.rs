@@ -1,12 +1,7 @@
-#[macro_use]
-extern crate log;
-extern crate anyhow;
-extern crate serde;
-extern crate simplelog;
-
 use anyhow::Result;
 use clap_verbosity_flag::Verbosity;
 use confy::ConfyError;
+use log::debug;
 use serde::{Deserialize, Serialize};
 use simplelog::*;
 use std::io::Write;
@@ -14,10 +9,6 @@ use std::path::PathBuf;
 use structopt::clap::{crate_version, AppSettings};
 use structopt::StructOpt;
 use text_io::read;
-
-mod lib;
-
-// babble-cli
 
 const APP_NAME: &'static str = "CHANGEME";
 const APP_DESCRIPTION: &'static str = "CHANGEME";
